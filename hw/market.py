@@ -29,8 +29,11 @@ class Market:
     @MyLogger.log_func_start_time_duration
     def get_drinks_by_production_date(self, from_date=None, to_date=None) -> list:
         # иначе может быть IndexError
-        if len(self.drinks) == 0:
-            return list()
+        if not self.drinks:
+            if from_date is None or to_date is None:
+                return self.get_drinks_without_production_date()
+            else:
+                return list()
 
         if from_date is None and to_date is None:
             return self.drinks + self.get_drinks_without_production_date()
