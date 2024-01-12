@@ -10,11 +10,11 @@ class MyLogger:
         def inner_func(*args, **kwargs):
             start = perf_counter()
             print("//////////////////////////////////////")
-            print(f"Init for function {target_func.__name__} at {datetime.now()}")
+            print(f"Init for function {target_func.__qualname__} at {datetime.now()}")
             result = target_func(*args, **kwargs)
             end = perf_counter()
             print(f"Function {target_func.__name__} finish at {datetime.now()}")
-            print(f"The execution time of the function {target_func.__name__} was {(end - start)}")
+            print(f"The execution time of the function {target_func.__name__} was {(end - start)}s")
             print(r"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
             return result
 
